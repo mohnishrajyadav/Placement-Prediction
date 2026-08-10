@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Placement Prediction{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🎓 Placement Predictor</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('data_loading') }}">Data Loading</a></li>
+            <li><a href="{{ url_for('eda') }}">EDA</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>Placement Prediction App &mdash; PyCharm / Flask project</p>
+    </footer>
+</body>
+</html>

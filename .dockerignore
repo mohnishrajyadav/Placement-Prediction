@@ -1,0 +1,16 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+.idea/
+.git/
+
+.pytest_cache/
+
+.env
+.env.*
+
+complete_code.py
+
+*.log

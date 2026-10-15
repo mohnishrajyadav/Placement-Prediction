@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Placement Prediction{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-brand">🎓 Placement Predictor</div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('index') }}">Dashboard</a></li>
-            <li><a href="{{ url_for('data_loading') }}">Data Loading</a></li>
-            <li><a href="{{ url_for('eda') }}">EDA</a></li>
-        </ul>
-    </nav>
 
-    <main class="content">
-        {% block content %}{% endblock %}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}Placement Prediction System{% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <a href="{{ url_for('index') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('data_loading') }}">
+                Data Loading
+            </a>
+
+            <a href="{{ url_for('eda') }}">
+                EDA
+            </a>
+
+            <a href="{{ url_for('feature_engg') }}">
+                Feature Engineering
+            </a>
+
+            <a href="{{ url_for('predict') }}">
+                Placement Prediction
+            </a>
+
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
     </main>
 
-    <footer class="footer">
-        <p>Placement Prediction App &mdash; PyCharm / Flask project</p>
+    <footer>
+        <p>Student Placement Prediction System</p>
     </footer>
+
 </body>
 </html>

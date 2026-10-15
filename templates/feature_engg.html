@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Feature Engineering</h1>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <h2>Transformed Dataset Preview</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    {% for col in preview_cols %}
+                        <th>{{ col }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in preview_rows %}
+                    <tr>
+                        {% for col in preview_cols %}
+                            <td>{{ row[col] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+
+{% endblock %}

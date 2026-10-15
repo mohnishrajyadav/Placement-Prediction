@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Student Placement Prediction</h1>
+
+    <p>
+        Enter the student's details to predict their
+        placement status using the trained machine learning model.
+    </p>
+
+    <form method="POST" action="{{ url_for('predict') }}">
+
+        {% for feature in numeric_cols %}
+        <div class="form-group">
+            <label for="{{ feature }}">
+                {{ feature }}
+            </label>
+
+            <input
+                type="number"
+                step="any"
+                id="{{ feature }}"
+                name="{{ feature }}"
+                required
+            >
+        </div>
+        {% endfor %}
+
+        {% for feature in categorical_cols %}
+        <div class="form-group">
+            <label for="{{ feature }}">
+                {{ feature }}
+            </label>
+
+            <input
+                type="text"
+                id="{{ feature }}"
+                name="{{ feature }}"
+                required
+            >
+        </div>
+        {% endfor %}
+
+        <button type="submit">
+            Predict Placement
+        </button>
+
+    </form>
+
+    {% if error %}
+        <div class="result error">
+            <h3>Prediction Error</h3>
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
+    {% if result %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+
+            <p>
+                <strong>Placement Status:</strong>
+                {{ result.prediction }}
+            </p>
+
+            {% if result.confidence is not none %}
+            <p>
+                <strong>Predicted Class Probability:</strong>
+                {{ result.confidence }}%
+            </p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
